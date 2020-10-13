@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "utf-8">
+    <title>Quick Pick</title>
+    <style>
+        body {
+            font-size: 18px;
+        }
+    </style>
+    </head>
+    <body>
+        <article>
+            <section>
+                <h1 style="font-size: 50px;">Quick Pick!</h1>
+                <script>
+                    winning_numbers = prompt("Enter winning numnbers separated" 
+                                            + "by a space", "28 30 31 42 43");
+                    winning_lucky = prompt("Enter a lucky ball number", "13");
+
+                    nums = [];
+                    for(let i = 0; i < 5; i ++) {
+                        nums.push(Math.floor(Math.random() * 47 + 1)); //47
+                    }
+                    nums.sort(function(a, b){return a - b});
+                    lucky = Math.floor(Math.random() * 17 + 1);
+                    document.write("The quick pick numbers are");
+                    for(let i = 0; i < 5; i ++) {
+                        document.write(" " + nums[i]);
+                    }
+                    document.write("</br>");
+                    document.write("The lucky ball number is " + lucky);
+                    document.write("</br></br>");
+
+
+                    var winning_arr = winning_numbers.split(' ');
+                    for(let i = 0; i < winning_arr.length; i ++)
+                        winning_arr[i] = parseInt(winning_arr[i])
+                    winning_arr.sort(function(a, b){return a - b});
+
+                    document.write("The winning numbers are ");
+                    for(let i = 0; i < winning_arr.length; i ++) {
+                        document.write(" " + winning_arr    [i]);
+                    }
+
+                    document.write("</br>")
+
+                    document.write("The lucky ball number is " + 
+                                    winning_lucky + "</br>");
+                    document.write("</br>");
+
+                    var matches = 0;
+
+                    for(let i = 0; i < winning_arr.length; i ++) {
+                        if (nums.includes(winning_arr[i])) {
+                            nums.splice(nums.indexOf(winning_arr[i]), 
+                                                        1);
+                            matches++;
+                        }
+                    }
+                    var lucky_matches = parseInt(winning_lucky) == lucky;
+                    var payout = 0;
+
+                    document.write("Matching numbers: " + matches + "</br>");
+                    if (lucky_matches)
+                        document.write("Your lucky number matches!");
+                    else
+                        document.write("Your lucky number does not match.");
+                    document.write("</br></br>");
+
+                    if (matches == 0 && lucky_matches) 
+                        payout = 4;
+                    else if (matches == 1 && lucky_matches)
+                        payout = 6;
+                    else if (matches == 2)
+                        payout = lucky_matches ? 25 : 3;
+                    else if (matches == 3)
+                        payout = lucky_matches ? 150 : 20;
+                    else if (matches == 4) 
+                        payout = lucky_matches ? 5000 : 200;
+                    if (matches == 5) {
+                        if (lucky_matches)
+                            document.write("You win $7,000 a WEEK for LIFE!");
+                        else 
+                            document.write("You win	$25,000 a YEAR for LIFE!");
+                    }
+                    else {
+                        if (payout == 0)
+                            document.write("I'm sorry, you lost.")
+                        else 
+                            document.write("You win! Your payout is: $" + 
+                                            payout)
+                    }
+
+
+                    
+                </script>
+            </section>
+        </article>
+    </body>
+</html>

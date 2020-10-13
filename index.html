@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "utf-8">
+    <title>Joe's Hotdogs</title>
+    <style>
+        body {
+            font-size: 18px;
+        }
+    </style>
+    </head>
+    <body>
+        <article>
+            <section>
+                <h1 style="font-size: 50px;">
+                    Welcome to Joe's Hotdogs
+                </h1>
+                <h1 style="font-size: 25px;">
+                    Your order
+                </h1>
+                <script>
+                    var hotdogs, fries, sodas;
+                    hotdogs = prompt("How many hotdogs would you like?", "1");
+                    fries = prompt("How many fries would you like?", "1");
+                    sodas = prompt("How many sodas would you like?", "1");
+                    var hPrice = 3.25 * hotdogs;
+                    var fPrice = 2 * fries;
+                    var sPrice = 1.5 * sodas;
+
+                    /* hotdogs ($3.25 each), French Fries ($2.00 each) and Drinks ($1.50 each). */
+                    document.write("# Hotdogs: " + hotdogs + " at $3.25 is $" + 
+                                    hPrice.toFixed(2) + "</br>");
+                    document.write("# Fries: " + fries + " at $2.00 is $" + 
+                                    fPrice.toFixed(2) + "</br>");
+                    document.write("# Sodas: " + sodas + " at $2.00 is $" + 
+                                    sPrice.toFixed(2) + "</br>");
+                    var subtotal = hPrice + fPrice + sPrice;
+                    if (subtotal >= 20) {
+                        document.write("You qualified for our 10% discount!" + "</br>")
+                        subtotal *= .9;
+                    }
+                    document.write("Subtotal: $" + subtotal.toFixed(2) + "</br>");
+                    var tax = subtotal * .0625;
+                    document.write("Meals Tax: $" + tax.toFixed(2) + "</br>");
+                    document.write("Total: $" + (subtotal - tax).toFixed(2) + "</br>");
+                </script>
+            </section>
+        </article>
+    </body>
+</html>
